@@ -1,0 +1,18 @@
+FROM node:25-bookworm AS frontend-build
+WORKDIR /frontend
+COPY frontend/flowlet .
+RUN npm ci && npm run build
+
+FROM gradle:9.3.1-jdk25 AS backend-build
+WORKDIR /workspace
+COPY backend/flowlet .
+COPY --from=frontend-build /frontend/dist src/main/resources/static
+RUN gradle bootJar -x test --no-daemon
+
+FROM eclipse-temurin:25-jre
+WORKDIR /flowlet
+
+COPY --from=backend-build /workspace/build/libs/*.jar /flowlet/app.jar
+
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar", "--spring.profiles.active=prod"]

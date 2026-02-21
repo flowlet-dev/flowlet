@@ -1,0 +1,30 @@
+### 取引登録
+POST http://localhost:8080/api/transactions
+Content-Type: application/json
+
+{
+  "transactionDate": "2026-02-12",
+  "amount": 100,
+  "transactionType": "EXPENSE",
+  "memo": "食費"
+}
+
+### 取引一覧取得
+GET http://localhost:8080/api/transactions
+
+### 取引更新
+PUT http://localhost:8080/api/transactions/0cecaca7-2c91-4916-9710-d566ea26fe46
+Content-Type: application/json
+
+{
+  "transactionDate": "2026-02-12",
+  "amount": 100,
+  "transactionType": "EXPENSE",
+  "memo": "食費"
+}
+
+### 取引削除
+DELETE http://localhost:8080/api/transactions/4593390e-5c7d-4946-af9a-869974ef71a1
+
+### 今期/前期集計API
+GET http://localhost:8080/api/transactions/summary
