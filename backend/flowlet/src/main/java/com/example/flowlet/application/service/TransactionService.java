@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Service
@@ -92,8 +93,12 @@ public class TransactionService {
      */
     public void update(String transactionId, String transactionDate, int amount, String transactionType, String memo) {
 
+        if (amount <= 0) {
+            throw new IllegalArgumentException("amount must be positive");
+        }
+
         TTransaction tTransaction = transactionJpaRepository.findById(UUID.fromString(transactionId))
-                .orElseThrow(() -> new RuntimeException("Not Found"));
+                .orElseThrow(() -> new NoSuchElementException("transaction not found"));
 
         tTransaction.setTransactionDate(LocalDate.parse(transactionDate));
         tTransaction.setAmount(amount);
@@ -108,7 +113,13 @@ public class TransactionService {
      * @param transactionId 収支ID
      */
     public void delete(String transactionId) {
-        transactionJpaRepository.deleteById(UUID.fromString(transactionId));
+        UUID id = UUID.fromString(transactionId);
+
+        if (!transactionJpaRepository.existsById(id)) {
+            throw new NoSuchElementException("transaction not found");
+        }
+
+        transactionJpaRepository.deleteById(id);
     }
 
     /**

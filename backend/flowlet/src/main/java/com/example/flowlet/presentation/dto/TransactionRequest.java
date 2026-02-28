@@ -1,5 +1,6 @@
 package com.example.flowlet.presentation.dto;
 
+import com.example.flowlet.infrastructure.persistence.entity.TransactionType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,7 +19,7 @@ public class TransactionRequest {
     private int amount;
 
     @NotNull
-    private String transactionType;
+    private TransactionType transactionType;
 
     @Size(max = 255)
     private String memo;

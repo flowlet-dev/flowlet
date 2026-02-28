@@ -1,4 +1,4 @@
-# flowlet
+﻿# flowlet
 
 収支を記録・管理するWebアプリケーションです。
 
@@ -33,3 +33,9 @@ make restart  # 再起動
 make logs     # ログ確認
 make ps       # コンテナ状態確認
 ```
+
+## Codex連携
+
+- エージェントルール: `AGENTS.md`
+- ドキュメント一覧: `docs/README.md`
+- セットアップ手順: `docs/CODEX_SETUP.md`
