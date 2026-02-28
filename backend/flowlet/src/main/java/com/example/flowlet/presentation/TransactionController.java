@@ -31,7 +31,7 @@ public class TransactionController {
         transactionService.register(
                 request.getTransactionDate(),
                 request.getAmount(),
-                request.getTransactionType(),
+                request.getTransactionType().name(),
                 request.getMemo()
         );
 
@@ -67,7 +67,7 @@ public class TransactionController {
                 transactionId,
                 request.getTransactionDate(),
                 request.getAmount(),
-                request.getTransactionType(),
+                request.getTransactionType().name(),
                 request.getMemo()
         );
 

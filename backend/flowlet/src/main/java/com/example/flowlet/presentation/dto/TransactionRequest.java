@@ -1,6 +1,6 @@
 package com.example.flowlet.presentation.dto;
 
-import com.example.flowlet.infrastructure.persistence.entity.TransactionType;
+import com.example.flowlet.constants.TransactionType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
