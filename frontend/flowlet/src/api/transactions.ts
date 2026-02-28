@@ -7,7 +7,7 @@ export async function getTransactions() {
 }
 
 export async function getSummary() {
-    const {data} = await api.get<SummaryResponse>("/summary");
+    const {data} = await api.get<SummaryResponse>("/transactions/summary");
     return data;
 }
 
