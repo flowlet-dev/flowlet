@@ -1,6 +1,7 @@
 # Docs Index
 
 `docs` 配下の入口です。目的別に最短で参照できるよう整理しています。
+更新時の手順は [DOCS_MAINTENANCE.md](./DOCS_MAINTENANCE.md) を参照してください。
 
 ## まず読む
 
